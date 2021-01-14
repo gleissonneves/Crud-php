@@ -3,7 +3,7 @@
 
 ##  Mais sobre Crud
 
-Crud é um framework de aplicação web com sintaxe expressiva e com objetivo de agilizar o desenvolvimento de novos sitemas. O Crud, como seu nome expressa são operações básicas para manipular e gerenciar dados em um banco de dados relacional dessa forma colocamos um curativo em uma ferida facilitando e otimizando uma tarefa comum no desenvolvimento de muitos projetos da web.
+Crud é um framework de aplicação web com sintaxe expressiva e com objetivo de agilizar o desenvolvimento de novos sitemas. O Crud, como seu nome expressa são operações básicas para manipular e gerenciar dados em um banco de dados relacional, dessa forma colocamos um curativo em uma ferida facilitando e otimizando uma tarefa comum no desenvolvimento de muitos projetos da web.
 
 ## O que está incluido?
 No download, você encontrará os seguintes diretórios e arquivos
@@ -71,14 +71,14 @@ require_once 'autoload.php';
 $crud = new Crud();
 
 /* Lê uma tabela específica*/
-// read('tabela');
+// read(tabela);
 $crudRead = $crud->read('pessoas');
 
 // resultado
 var_dump($crudRead);
 </pre>
 
-## Lendo registro (crUd - Upadte)
+## Atualizando registro (crUd - Upadte)
 <pre>
 use Crud\Database\Crud;
 
@@ -89,7 +89,7 @@ $crud = new Crud();
 /* Atualiza */
 $_POST['nome'] = 'test2';
 
-// update('tabela', query);
+// update(tabela, dados, query);
 $crudUpdate    = $crud->update('pessoas', $_POST, "id = 1");
 
 // resultado
@@ -106,7 +106,7 @@ require_once 'autoload.php';
 $crud = new Crud();
 
 /* Deleta */
-// pessoas('tabela', query);
+// pessoas(tabela, query);
 $crudDelete = $crud->delete('pessoas', "id = 1");
 
 // resultado
