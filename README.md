@@ -22,7 +22,10 @@ Crud/
 ## Sobre a estrutura
 Config - possui arquivos de configuração de ambiente como constantes de erro e sucesse além da configuraçãos com de Banco de dados.
 
-Database - onde está localizado a conexão com o banco de dados e as operações. 
+Database - onde está localizado as operações. 
+
+## Adicione a conexão
+clone o repositório <pre> https://github.com/gdk46/ConnectDb.git </pre>
 
 ## Como utilizar?
 importe os arquivos de autoload (recomendações da psr-4)
@@ -41,35 +44,41 @@ require_once 'autoload.php';
 $crud = new Crud\Database\Crud();
 </pre>
 
+
+## Passando a conexão
+
+<pre>
+use Crud\Database\Crud;
+require_once 'autoload.php';
+
+ou
+
+require_once 'autoload.php';
+$crud = new Crud\Database\Crud();
+</pre>
+
 ## Criando um novo registro (Crud - Create)
 <pre>
 require_once '../autoload.php';
 
-$featureDb = [  
-    'db_name' => 'test1',
+$featureDb = [
+    "db_drive" => "myslq",
+    "db_port" => "3306",
+    "db_name" => "test",
+    "db_host" => "localhost",
+    "db_username" => "test",
+    "db_passwd" => "1234",
+    "db_charset" => "utf-8",
 ];
 
 $db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
 $crud = new Crud\Database\Crud($db->getConnect());
-
-/* Cria */
-$_POST['nome'] = 'Nome1';
-
-// create('tabela', array);
-$crudCreate = $crud->create('pessoas', $_POST);
-
-// resultado
-echo $crudCreate;
 </pre>
 
 
 ## Lendo registros (cRud - Read)
 <pre>
 require_once '../autoload.php';
-
-$featureDb = [  
-    'db_name' => 'test1',
-];
 
 $db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
 $crud = new Crud\Database\Crud($db->getConnect());
@@ -85,10 +94,6 @@ var_dump($crudRead);
 ## Atualizando registro (crUd - Upadte)
 <pre>
 require_once '../autoload.php';
-
-$featureDb = [  
-    'db_name' => 'test1',
-];
 
 $db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
 $crud = new Crud\Database\Crud($db->getConnect());
@@ -107,10 +112,6 @@ echo $crudUpdate;
 ## Deletando registro (cruD - Delete)
 <pre>
 require_once '../autoload.php';
-
-$featureDb = [  
-    'db_name' => 'test1',
-];
 
 $db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
 $crud = new Crud\Database\Crud($db->getConnect());
