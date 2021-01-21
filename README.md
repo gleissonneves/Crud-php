@@ -48,17 +48,6 @@ $crud = new Crud\Database\Crud();
 ## Passando a conexão
 
 <pre>
-use Crud\Database\Crud;
-require_once 'autoload.php';
-
-ou
-
-require_once 'autoload.php';
-$crud = new Crud\Database\Crud();
-</pre>
-
-## Criando um novo registro (Crud - Create)
-<pre>
 require_once '../autoload.php';
 
 $featureDb = [
@@ -75,36 +64,35 @@ $db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o 
 $crud = new Crud\Database\Crud($db->getConnect());
 </pre>
 
+## Criando um novo registro (Crud - Create)
+<pre>
+/* Cria */
+$_POST['nome'] = 'Nome3';
+
+// (tabela, array);
+$crudCreate = $crud->create('pessoas', $_POST);
+
+echo $crudCreate;
+</pre>
+
 
 ## Lendo registros (cRud - Read)
 <pre>
-require_once '../autoload.php';
-
-$db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
-$crud = new Crud\Database\Crud($db->getConnect());
-
-/* Lê uma tabela específica*/
-// read(tabela);
+/* Lê */
+// (tabela;
 $crudRead = $crud->read('pessoas');
 
-// resultado
 var_dump($crudRead);
 </pre>
 
 ## Atualizando registro (crUd - Upadte)
 <pre>
-require_once '../autoload.php';
-
-$db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
-$crud = new Crud\Database\Crud($db->getConnect());
-
 /* Atualiza */
-$_POST['nome'] = 'test2';
+$_POST['nome'] = 'test dos santos neves algusto';
 
-// update(tabela, dados, query);
-$crudUpdate    = $crud->update('pessoas', $_POST, "id = 1");
+// (tabela, array, query);
+$crudUpdate    = $crud->update('pessoas', $_POST, "id = 26");
 
-// resultado
 echo $crudUpdate;
 </pre>
 
@@ -118,9 +106,8 @@ $crud = new Crud\Database\Crud($db->getConnect());
 
 /* Deleta */
 // pessoas(tabela, query);
-$crudDelete = $crud->delete('pessoas', "id = 1");
+$crudDelete = $crud->delete('pessoas', "id = 26");
 
-// resultado
 echo $crudDelete;
 </pre>
 
