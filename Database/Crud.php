@@ -2,25 +2,22 @@
 
 namespace Crud\Database;
 
-use Crud\Database\Connect;
 use Crud\Config\Mensage;
 
 class Crud
 {
 
-    private object $db;
+    private $db;
 
     /**
      * Instancia Database
      *
-     * @param object $db
+     * @param $connection Receive connection with database
      */
-    public function __construct()
+    public function __construct($connection)
     {
-        $this->db = new Connect();
-        $this->db = $this->db->getConnect();
+        $this->db = $connection;
     }
-
 
 
     /**
@@ -52,8 +49,6 @@ class Crud
             return $sql;
         }
     }
-
-
 
     /**
      * reading data from a table
@@ -88,8 +83,6 @@ class Crud
         }
     }
 
-
-
     /**
      * update or increment data from a table
      *
@@ -101,8 +94,8 @@ class Crud
      */
     public function update(string $table, array $dataArr, string $query = NULL, bool $debuger = false)
     {
-        foreach ($dataArr as $Keys => $ValuesKeys) {
-            $fields[] = "$Keys = '$ValuesKeys'";
+        foreach ($dataArr as $keys => $values) {
+            $fields[] = "$keys = '$values'";
         }
 
         $fields = implode(", ", $fields);
@@ -125,8 +118,6 @@ class Crud
             return $sql;
         }
     }
-
-
 
     /**
      * Delete data from a table
