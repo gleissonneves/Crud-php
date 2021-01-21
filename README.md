@@ -12,10 +12,8 @@ No download, você encontrará os seguintes diretórios e arquivos
 Crud/
 │   
 ├── Config/
-│   ├── Env.php 
 │   └── Mensage.php
 ├── Database/
-│   ├── Connect.php
 │   └── Crud.php
 ├── autoload.php
 └── LICENSE
@@ -45,11 +43,14 @@ $crud = new Crud\Database\Crud();
 
 ## Criando um novo registro (Crud - Create)
 <pre>
-use Crud\Database\Crud;
+require_once '../autoload.php';
 
-require_once 'autoload.php';
+$featureDb = [  
+    'db_name' => 'test1',
+];
 
-$crud = new Crud();
+$db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
+$crud = new Crud\Database\Crud($db->getConnect());
 
 /* Cria */
 $_POST['nome'] = 'Nome1';
@@ -64,11 +65,14 @@ echo $crudCreate;
 
 ## Lendo registros (cRud - Read)
 <pre>
-use Crud\Database\Crud;
+require_once '../autoload.php';
 
-require_once 'autoload.php';
+$featureDb = [  
+    'db_name' => 'test1',
+];
 
-$crud = new Crud();
+$db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
+$crud = new Crud\Database\Crud($db->getConnect());
 
 /* Lê uma tabela específica*/
 // read(tabela);
@@ -80,11 +84,14 @@ var_dump($crudRead);
 
 ## Atualizando registro (crUd - Upadte)
 <pre>
-use Crud\Database\Crud;
+require_once '../autoload.php';
 
-require_once 'autoload.php';
+$featureDb = [  
+    'db_name' => 'test1',
+];
 
-$crud = new Crud();
+$db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
+$crud = new Crud\Database\Crud($db->getConnect());
 
 /* Atualiza */
 $_POST['nome'] = 'test2';
@@ -99,11 +106,14 @@ echo $crudUpdate;
 
 ## Deletando registro (cruD - Delete)
 <pre>
-use Crud\Database\Crud;
+require_once '../autoload.php';
 
-require_once 'autoload.php';
+$featureDb = [  
+    'db_name' => 'test1',
+];
 
-$crud = new Crud();
+$db   = new ConnectDb\Database\Connect($featureDb); // classe de conexão com o banco de dados
+$crud = new Crud\Database\Crud($db->getConnect());
 
 /* Deleta */
 // pessoas(tabela, query);
